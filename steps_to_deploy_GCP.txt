@@ -1,0 +1,23 @@
+# Steps we are following to deploy our app on GCP
+
+    Step1: Your main python file name should be main.py
+    Step2: Your flask object name, which we have defined in application.py should also be the application.
+    Step3: Create a new file and name it as app.yaml
+    Step4: Add the belwo content to your app.yaml
+            runtime: python
+            env: flex
+            entrypoint: gunicorn -b :$PORT main:application
+
+            runtime_config:
+              python_version: 3
+
+
+            manual_scaling:
+              instances: 1
+            resources:
+              cpu: 1
+              memory_gb: 0.5
+              disk_size_gb: 10
+
+    Step5: Initialiase your local git using below command
+            git init
